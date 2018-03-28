@@ -1,0 +1,26 @@
+{% extends 'tunr/base.html' %}
+
+{% load favorite_tags %}
+
+{% block content %}
+    <h2>{{ artist.name }} <a href="{% url 'artist_edit' pk=artist.pk %}">(edit)</a></h2>
+    <h4>{{ artist.nationality }}</h4>
+
+    <img src="{{ artist.photo_url }}" alt="" class="artist-photo">
+
+    <h3>Songs <a href="{% url 'song_create' %}">(+)</a></h3>
+    <ul>
+        {% for song in artist.songs.all %}
+            <li>
+                <a href="{% url 'song_detail' pk=song.pk %}">{{ song.title }}-{{ song.album }}</a>
+                {% if user.is_authenticated %}
+                    {% if song|has_favorite:user %}
+                        <a href="{% url 'remove_favorite' song_id=song.id %}" class="fav">&hearts;</a>
+                    {% else %}
+                        <a href="{% url 'add_favorite' song_id=song.id %}" class="no-fav">&hearts;</a>
+                    {% endif %}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
