@@ -9,14 +9,6 @@
         <nav>
             <a href="/songs">Songs</a>
             <a href="/">Artists</a>
-            <div class="user-info">
-                {% if user.is_authenticated %}
-                    Welcome, {{ user.username }}
-                    <a href="{% url 'logout' %}">Signout</a>
-                {% else %}
-                    <a href="{% url 'login' %}">Login</a>
-                {% endif %}
-            </div>
         </nav>
         {% block content %}
         {% endblock %}
