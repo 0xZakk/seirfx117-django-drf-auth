@@ -20,5 +20,5 @@ class Song(models.Model):
 
 
 class Favorite(models.Model):
-    user = models.ForeignKey('auth.User', related_name='favorites')
-    song = models.ForeignKey(Song, related_name='favorites')
+    user = models.ForeignKey('auth.User', related_name='favorites', on_delete=models.CASCADE)
+    song = models.ForeignKey(Song, related_name='favorites', on_delete=models.CASCADE)
