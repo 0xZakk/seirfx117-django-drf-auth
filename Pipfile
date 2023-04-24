@@ -7,10 +7,10 @@ verify_ssl = true
 autopep8 = "*"
 
 [packages]
-ipython = "==6.2.1"
-psycopg2 = "==2.7.3.1"
-pytz = "==2017.2"
-Django = "==2.0.5"
+ipython = "*"
+psycopg2 = "*"
+pytz = "*"
+Django = "*"
 
 [requires]
 python_version = "*"
