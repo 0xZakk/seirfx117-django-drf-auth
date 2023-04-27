@@ -3,16 +3,25 @@ from django.shortcuts import render, redirect
 from .models import Artist, Song, Favorite
 from .forms import ArtistForm, SongForm
 
+from rest_framework import generics
+from .serializers import ArtistSerializer
 
-def artist_list(request):
-    artists = Artist.objects.all()
-    return render(request, 'tunr/artist_list.html', {'artists': artists})
+class ArtistList(generics.ListCreateAPIView):
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
 
+class ArtistDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
 
-def artist_detail(request, pk):
-    artist = Artist.objects.get(id=pk)
-    return render(request, 'tunr/artist_detail.html', {'artist': artist})
-
+# def artist_list(request):
+#     artists = Artist.objects.all()
+#     return render(request, 'tunr/artist_list.html', {'artists': artists})
+#
+#
+# def artist_detail(request, pk):
+#     artist = Artist.objects.get(id=pk)
+#     return render(request, 'tunr/artist_detail.html', {'artist': artist})
 
 def artist_create(request):
     if request.method == 'POST':

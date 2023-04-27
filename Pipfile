@@ -11,6 +11,7 @@ ipython = "*"
 psycopg2 = "*"
 pytz = "*"
 Django = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "*"
