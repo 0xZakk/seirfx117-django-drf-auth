@@ -12,6 +12,7 @@ psycopg2 = "*"
 pytz = "*"
 Django = "*"
 djangorestframework = "*"
+djangorestframework-simplejwt = "*"
 
 [requires]
 python_version = "*"
